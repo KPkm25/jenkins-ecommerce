@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     echo "Pushing Docker image to Docker Hub..."
-                    docker.withRegistry('', DOCKER_CRED) {
+                    docker.withDockerRegistry([credentialsId: 'DOCKER_CRED', url: '']) {
                         echo "Successful login"
                         sh "docker push ${DOCKER_IMAGE}"
                     }
