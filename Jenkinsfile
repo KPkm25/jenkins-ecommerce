@@ -30,10 +30,10 @@ pipeline {
             steps {
                 script {
                     echo "Pushing Docker image to Docker Hub..."
-                    docker.withDockerRegistry([credentialsId: 'DOCKER_CRED', url: '']) {
-                        echo "Successful login"
-                        sh "docker push ${DOCKER_IMAGE}"
-                    }
+withDockerRegistry([credentialsId: 'docker-creds', url: 'https://index.docker.io/v1/']) {
+    docker.image('kpkm25/jenkins-ecommerce').push()
+}
+
                 }
             }
         }
